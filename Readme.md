@@ -5,7 +5,7 @@ List the most recent 100 users visiting your site and display the date, time, IP
 
 This module tracks each new user that first visits your site, by activating upon the start of a new session. When a new session is activated, the user's referring url information is added to a queue. You can output the queue in your view, such as on an administrator page, to get a quick view of the users accessing your site.
 
-An example output might look like:
+For example:
 ```
 1. 4/23/2013 11:42:07 AM - 127.0.0.1
 Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31
@@ -14,10 +14,13 @@ referer: http://www.google.com/search?q=software+design&aq=0&oq=software+design
 ```
 
 ## Usage
+
+Install the node.js module.
 ```bash
 $ npm install usersonline
 ```
 
+## app.js
 ```
 var usersonline = require('usersonline');
 

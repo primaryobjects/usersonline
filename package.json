@@ -1,0 +1,43 @@
+{
+  "name": "usersonline",
+  "version": "0.1.0",
+  "description": "List the most recent 100 users visiting your site: Date, Time, IP Address, User Agent, Landing Page, Referring Url.",
+  "author": {
+    "name": "Kory Becker",
+    "email": "kbecker@primaryobjects.com",
+    "url": "http://www.primaryobjects.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/primaryobjects/usersonline.git"
+  },
+  "main": "./lib",
+  "dependencies": {
+	"express": "*",
+	"remoteip": "*"
+  },
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "usersonline",
+    "ip address",
+    "visitors",
+    "logger",
+    "log",
+	"most recent",
+	"users online",
+	"user agent",
+	"referer",
+	"referrer",
+	"stats"
+  ],
+  "_id": "usersonline@0.1.0",
+  "_from": "usersonline"
+}

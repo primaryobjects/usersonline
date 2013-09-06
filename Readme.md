@@ -49,14 +49,14 @@ exports.index = function(req, res) {
 ```
 each visitor, i in visitorList
 	p
-		#div
-			#{i + 1}. #{visitor.date} - #{visitor.ip}
-		#div
-			#{visitor.userAgent}
-		#div
+		div
+			| #{i + 1}. #{visitor.date} - #{visitor.ip}
+		div
+			| #{visitor.userAgent}
+		div
 			| landing:
 			a(href='#{visitor.url}', target='_blank') #{visitor.url}
-		#div
+		div
 			if (visitor.referer != undefined)
 				| referer:
 				a(href='#{visitor.referer}', target='_blank') #{visitor.referer}						

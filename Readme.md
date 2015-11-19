@@ -34,6 +34,8 @@ app.configure(function(){
 });
 ```
 
+Note, if you are using express.static() for static files, the line `app.use(usersonline.logger)` must come before it.
+
 In your view route, you can display the UsersOnline list as follows:
 
 ## index.js

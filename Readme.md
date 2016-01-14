@@ -31,14 +31,13 @@ app.use(session({ secret: 'secret-session-key', resave: false, saveUninitialized
 app.use(usersonline.logger); // Enable usersonline.
 
 app.get('/users', function(req, res, next) {
-    // The url /users will return a JSON list of users online.
     res.json(usersonline.visitorList);
 });
 ```
 
 Note, if you are using express.static() for static files, the line `app.use(usersonline.logger)` must come before it.
 
-To display the users online in a static HTML page, simply make a request to the /users method and display the resulting JSON:
+To display the users online in a static HTML page, simply make a request to /users and display the resulting JSON, as follows:
 
 ## users.html
 
@@ -75,7 +74,7 @@ $(document).ready(function() { getUsers(); });
 </html>
 ```
 
-If you are using express routes, you can display the UsersOnline list in your view route, as follows:
+If you are using express routing, you can display the UsersOnline list in your view route, as follows:
 
 ## index.js
 ```

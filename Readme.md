@@ -22,21 +22,60 @@ $ npm install usersonline
 
 ## app.js
 ```
-var usersonline = require('usersonline');
+var session = require('express-session'),
+    usersonline = require('usersonline');
 
-app.configure(function(){
-  ...    
-  app.use(express.cookieParser('mycookie')); // Enable session in Express.
-  app.use(express.session()); // Enable session in Express.
-  app.use(usersonline.logger); // Enable UsersOnline.  
-  app.use(app.router);  
-  ...
+var app = express();
+
+app.use(session({ secret: 'secret-session-key', resave: false, saveUninitialized: false })); // Enable session.
+app.use(usersonline.logger); // Enable usersonline.
+
+app.get('/users', function(req, res, next) {
+    // The url /users will return a JSON list of users online.
+    res.json(usersonline.visitorList);
 });
 ```
 
 Note, if you are using express.static() for static files, the line `app.use(usersonline.logger)` must come before it.
 
-In your view route, you can display the UsersOnline list as follows:
+To display the users online in a static HTML page, simply make a request to the /users method and display the resulting JSON:
+
+## users.html
+
+```
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+function getUsers() {
+    $.get('/users', function(data) {
+        for (var i in data) {
+            var visitor = data[i];
+            var status = $('#status');
+
+            status.append((parseInt(i) + 1) + '. ' + visitor.date + ' - ' + visitor.ip + '<br>');
+            status.append(visitor.userAgent + '<br>');
+            status.append('landing: ');
+            status.append("<a href='" + visitor.url + "', target='_blank'>" + visitor.url + "</a><br>");
+            if (visitor.referer != undefined) {
+                status.append('referer: ');
+                status.append("<a href='" + visitor.referer + "', target='_blank'>" + visitor.referer + "</a><br>");
+            }
+            status.append('<br>');
+        }
+    });
+}
+$(document).ready(function() { getUsers(); });
+</script>
+</head>
+<body>
+    <h2>Users Online</h2>
+    <div id="status"></div>
+</body>
+</html>
+```
+
+If you are using express routes, you can display the UsersOnline list in your view route, as follows:
 
 ## index.js
 ```

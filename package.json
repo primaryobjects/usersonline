@@ -1,6 +1,6 @@
 {
   "name": "usersonline",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "List the most recent 100 users visiting your site: Date, Time, IP Address, User Agent, Landing Page, Referring Url.",
   "author": {
     "name": "Kory Becker",
@@ -38,6 +38,6 @@
 	"referrer",
 	"stats"
   ],
-  "_id": "usersonline@0.1.1",
+  "_id": "usersonline@0.1.2",
   "_from": "usersonline"
 }
